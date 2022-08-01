@@ -1,17 +1,18 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CustomTextfield extends StatefulWidget {
   final IconData icon;
   final String labelName;
   final bool isSecret;
+  final List<TextInputFormatter>? formatter;
 
   const CustomTextfield({
     Key? key,
     required this.icon,
     required this.labelName,
     this.isSecret = false,
+    this.formatter,
   }) : super(key: key);
 
   @override
@@ -32,6 +33,7 @@ class _CustomTextfieldState extends State<CustomTextfield> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15),
       child: TextFormField(
+        inputFormatters: widget.formatter,
         //deixa o texto oculto
         obscureText: isObscure,
         decoration: InputDecoration(

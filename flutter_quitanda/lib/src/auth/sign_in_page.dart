@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
 import '../components/custom_textfield.dart';
+import 'sign_up_page.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -18,7 +19,6 @@ class SignInPage extends StatelessWidget {
           height: size.height,
           width: size.width,
           child: Column(
-            //dois Expanded pra deixar a tela dividida
             children: [
               Expanded(
                   child: Column(
@@ -83,20 +83,23 @@ class SignInPage extends StatelessWidget {
                     top: Radius.circular(45),
                   ),
                 ),
-                // -----> Formulario <-----
+                // Formulario
                 child: Column(
                   //estica o maximo no eixo cruzado
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    // Email
                     const CustomTextfield(
-                      labelName: 'Email',
+                      labelName: 'E-mail',
                       icon: Icons.email,
                     ),
+                    // Senha
                     const CustomTextfield(
                       labelName: 'Senha',
                       icon: Icons.lock,
                       isSecret: true,
                     ),
+                    // Entrar
                     SizedBox(
                       height: 45,
                       child: ElevatedButton(
@@ -114,6 +117,7 @@ class SignInPage extends StatelessWidget {
                         ),
                       ),
                     ),
+                    //Esqueceu senha
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
@@ -124,6 +128,7 @@ class SignInPage extends StatelessWidget {
                             )),
                       ),
                     ),
+                    // Divisor
                     Padding(
                       padding: const EdgeInsets.only(bottom: 10),
                       child: Row(
@@ -147,6 +152,7 @@ class SignInPage extends StatelessWidget {
                         ],
                       ),
                     ),
+                    // Criar conta
                     SizedBox(
                       height: 45,
                       child: OutlinedButton(
@@ -159,7 +165,10 @@ class SignInPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(18),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => SignUpPage()));
+                        },
                         child: const Text(
                           'Criar conta',
                           style: TextStyle(
