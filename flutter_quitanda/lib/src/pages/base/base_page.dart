@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_quitanda/src/basepages/home/home_tab.dart';
+import 'package:flutter_quitanda/src/pages/home/home_tab.dart';
 
 class BasePage extends StatefulWidget {
   const BasePage({Key? key}) : super(key: key);
