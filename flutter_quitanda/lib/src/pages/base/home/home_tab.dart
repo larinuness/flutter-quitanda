@@ -1,6 +1,9 @@
+// ignore_for_file: library_prefixes
+
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
+import '../../../app_data.dart' as appData;
 import '../../components/custom_category_tale.dart';
 
 class HomeTab extends StatefulWidget {
@@ -11,7 +14,7 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
-  final categories = ['Frutas', 'Grãos', 'Legumes', 'Verduras', 'Cereais'];
+  
 
   String selectCategory = 'Frutas';
 
@@ -104,11 +107,11 @@ class _HomeTabState extends State<HomeTab> {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return CustomCategoryTile(
-                    category: categories[index],
-                    isSelected: categories[index] == selectCategory,
+                    category: appData.categories[index],
+                    isSelected: appData.categories[index] == selectCategory,
                     onPressed: () {
                       setState(() {
-                        selectCategory = categories[index];
+                        selectCategory = appData.categories[index];
                       });
                     },
                   );
@@ -116,7 +119,7 @@ class _HomeTabState extends State<HomeTab> {
                 separatorBuilder: (context, index) => const SizedBox(
                       width: 10,
                     ),
-                itemCount: categories.length),
+                itemCount: appData.categories.length),
           ),
         ],
       ),

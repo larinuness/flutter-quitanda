@@ -109,7 +109,7 @@ class SignInPage extends StatelessWidget {
                         onPressed: () {
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                  builder: (context) => BasePage()));
+                                  builder: (context) => const BasePage()));
                         },
                         child: const Text(
                           'Entrar',
