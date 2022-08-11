@@ -66,9 +66,6 @@ class SignInPage extends StatelessWidget {
                           FadeAnimatedText(
                             'Legumes',
                           ),
-                          FadeAnimatedText(
-                            'Frutas',
-                          ),
                         ],
                       ),
                     ),
