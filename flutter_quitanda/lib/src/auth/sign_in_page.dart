@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_quitanda/src/base/base_page.dart';
 
 import '../components/custom_textfield.dart';
 import 'sign_up_page.dart';
@@ -108,7 +109,11 @@ class SignInPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(18),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) => BasePage()));
+                        },
                         child: const Text(
                           'Entrar',
                           style: TextStyle(
