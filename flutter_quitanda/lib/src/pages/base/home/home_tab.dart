@@ -2,6 +2,7 @@
 
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_quitanda/src/pages/components/custom_item_tile.dart';
 
 import '../../../app_data.dart' as appData;
 import '../../components/custom_category_tale.dart';
@@ -14,8 +15,6 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
-  
-
   String selectCategory = 'Frutas';
 
   @override
@@ -121,6 +120,24 @@ class _HomeTabState extends State<HomeTab> {
                     ),
                 itemCount: appData.categories.length),
           ),
+          Expanded(
+            child: GridView.builder(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+              physics: const BouncingScrollPhysics(),
+              itemCount: appData.items.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                childAspectRatio: 9 / 12.5,
+              ),
+              itemBuilder: (context, index) {
+                return CustomItemTile(
+                  item: appData.items[index],
+                );
+              },
+            ),
+          )
         ],
       ),
     );
