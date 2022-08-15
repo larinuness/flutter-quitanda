@@ -4,11 +4,13 @@ class CustomQuantity extends StatelessWidget {
   final int value;
   final String suffixText;
   final Function(int quantity) result;
+  final bool isRemovable;
   const CustomQuantity(
       {Key? key,
       required this.value,
       required this.suffixText,
-      required this.result})
+      required this.result,
+      this.isRemovable = false})
       : super(key: key);
 
   @override
@@ -27,12 +29,17 @@ class CustomQuantity extends StatelessWidget {
         ],
       ),
       child: Row(
+        //vai crescer só o minimo
+        mainAxisSize: MainAxisSize.min,
         children: [
           _QuantityButton(
-            icon: Icons.remove,
-            color: Colors.grey,
+            //só aparece o lixo quando for 1 na tela de carrinho
+            icon: !isRemovable || value > 1 ? Icons.remove : Icons.delete,
+            color: !isRemovable || value > 1
+                ? Colors.grey
+                : const Color.fromARGB(255, 183, 55, 46),
             onTap: () {
-              if (value == 1) return;
+              if (value == 1 && !isRemovable) return;
               int resultCount = value - 1;
 
               result(resultCount);
