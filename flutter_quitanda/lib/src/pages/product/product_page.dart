@@ -4,11 +4,18 @@ import 'package:flutter_quitanda/src/pages/components/custom_quantity.dart';
 import '../../models/item_model.dart';
 import '../../utils/utils_services.dart';
 
-class ProductPage extends StatelessWidget {
+class ProductPage extends StatefulWidget {
   final ItemModel item;
-  ProductPage({Key? key, required this.item}) : super(key: key);
+  const ProductPage({Key? key, required this.item}) : super(key: key);
 
+  @override
+  State<ProductPage> createState() => _ProductPageState();
+}
+
+class _ProductPageState extends State<ProductPage> {
   final utils = UtilsService();
+
+  int cartItemQuantity = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +27,8 @@ class ProductPage extends StatelessWidget {
             children: [
               Expanded(
                 child: Hero(
-                  tag: item.img,
-                  child: Image.asset(item.img),
+                  tag: widget.item.img,
+                  child: Image.asset(widget.item.img),
                 ),
               ),
               Expanded(
@@ -49,7 +56,7 @@ class ProductPage extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              item.name,
+                              widget.item.name,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: const TextStyle(
@@ -58,12 +65,20 @@ class ProductPage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          CustomQuantity()
+                          CustomQuantity(
+                            suffixText: widget.item.unit,
+                            value: cartItemQuantity,
+                            result: (int quantity) {
+                              setState(() {
+                                cartItemQuantity = quantity;
+                              });
+                            },
+                          ),
                         ],
                       ),
                       Text(
                         utils.priceToCurrency(
-                          item.price,
+                          widget.item.price,
                         ),
                         style: const TextStyle(
                           fontSize: 23,
@@ -78,7 +93,7 @@ class ProductPage extends StatelessWidget {
                           ),
                           child: SingleChildScrollView(
                             child: Text(
-                              item.description,
+                              widget.item.description,
                               style: const TextStyle(height: 1.5),
                             ),
                           ),
