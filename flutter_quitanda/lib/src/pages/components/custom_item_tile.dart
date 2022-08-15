@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../models/item_model.dart';
 import '../../utils/utils_services.dart';
+import '../product/product_page.dart';
 
 class CustomItemTile extends StatelessWidget {
   CustomItemTile({Key? key, required this.item}) : super(key: key);
@@ -14,47 +15,56 @@ class CustomItemTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Card(
-          elevation: 2,
-          shadowColor: Colors.grey[300],
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(
-              20,
+        GestureDetector(
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => ProductPage(item: item)));
+          },
+          child: Card(
+            elevation: 2,
+            shadowColor: Colors.grey[300],
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(
+                20,
+              ),
             ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Expanded(
-                  child: Image.asset(
-                    item.img,
-                  ),
-                ),
-                Text(
-                  item.name,
-                  style: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                Row(
-                  children: [
-                    Text(utils.priceToCurrency(item.price),
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: Colors.green)),
-                    Text(
-                      item.unit,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey[500],
-                        fontSize: 12,
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Expanded(
+                    child: Hero(
+                      tag: item.img,
+                      child: Image.asset(
+                        item.img,
                       ),
                     ),
-                  ],
-                )
-              ],
+                  ),
+                  Text(
+                    item.name,
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  Row(
+                    children: [
+                      Text(utils.priceToCurrency(item.price),
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: Colors.green)),
+                      Text(
+                        item.unit,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey[500],
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),
