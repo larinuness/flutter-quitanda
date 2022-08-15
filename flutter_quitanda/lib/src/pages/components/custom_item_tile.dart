@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../models/item_model.dart';
 import '../../utils/utils_services.dart';
-import '../product/product_page.dart';
+import '../base/home/product/product_page.dart';
 
 class CustomItemTile extends StatelessWidget {
   CustomItemTile({Key? key, required this.item}) : super(key: key);
