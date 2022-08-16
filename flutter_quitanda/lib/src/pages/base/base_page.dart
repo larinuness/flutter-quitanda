@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'cart/cart_tab.dart';
 import 'home/home_tab.dart';
+import 'profile/profile_tab.dart';
 
 class BasePage extends StatefulWidget {
   const BasePage({Key? key}) : super(key: key);
@@ -23,8 +24,8 @@ class _BasePageState extends State<BasePage> {
           children: [
             const HomeTab(),
             const CartTab(),
-            Container(color: Colors.purple),
             Container(color: Colors.orange),
+            const ProfileTab(),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
