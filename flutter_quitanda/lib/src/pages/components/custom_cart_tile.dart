@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_quitanda/src/pages/components/custom_quantity.dart';
+import 'custom_quantity.dart';
 
 import '../../models/cart_item_model.dart';
 import '../../utils/utils_services.dart';

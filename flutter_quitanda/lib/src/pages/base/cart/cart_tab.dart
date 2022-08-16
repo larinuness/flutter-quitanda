@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quitanda/src/models/cart_item_model.dart';
 import 'package:flutter_quitanda/src/pages/components/custom_cart_tile.dart';
 
-import '../../../utils/utils_services.dart';
 import '../../../app_data.dart' as appData;
+import '../../../utils/utils_services.dart';
 
 class CartTab extends StatefulWidget {
   const CartTab({Key? key}) : super(key: key);
