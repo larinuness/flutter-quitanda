@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import, library_prefixes
+// ignore_for_file: unused_import, library_prefixes, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:flutter_quitanda/src/models/cart_item_model.dart';
@@ -23,6 +23,15 @@ class _CartTabState extends State<CartTab> {
     });
   }
 
+  double cartTotalPrice() {
+    double total = 0;
+    for (var item in appData.cartItems) {
+      total += item.totalPrice();
+    }
+
+    return total;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +47,9 @@ class _CartTabState extends State<CartTab> {
             child: ListView.builder(
               itemCount: appData.cartItems.length,
               itemBuilder: (context, index) {
-                return CustomCartTile(cartItem: appData.cartItems[index]);
+                return CustomCartTile(
+                    cartItem: appData.cartItems[index],
+                    remove: removeItemFromCart);
               },
             ),
           ),
@@ -72,7 +83,7 @@ class _CartTabState extends State<CartTab> {
                   height: 8,
                 ),
                 Text(
-                  utils.priceToCurrency(50),
+                  utils.priceToCurrency(cartTotalPrice()),
                   style: const TextStyle(
                     fontSize: 23,
                     color: Colors.green,
@@ -85,7 +96,10 @@ class _CartTabState extends State<CartTab> {
                 SizedBox(
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      bool? result = await showOrderConfirmation();
+                      print(result);
+                    },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
@@ -105,6 +119,45 @@ class _CartTabState extends State<CartTab> {
           ),
         ],
       ),
+    );
+  }
+
+  Future<bool?> showOrderConfirmation() {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          title: const Text('Confirmação'),
+          content: const Text('Deseja realmente concluir o pedido?'),
+          actions: [
+            TextButton(
+              style: TextButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              onPressed: () {
+                Navigator.pop(context, false);
+              },
+              child: const Text('Não'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context, true);
+              },
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              child: const Text('Sim'),
+            )
+          ],
+        );
+      },
     );
   }
 }

@@ -6,7 +6,9 @@ import '../../utils/utils_services.dart';
 
 class CustomCartTile extends StatefulWidget {
   final CartItemModel cartItem;
-  const CustomCartTile({Key? key, required this.cartItem}) : super(key: key);
+  final Function(CartItemModel) remove;
+  const CustomCartTile({Key? key, required this.cartItem, required this.remove})
+      : super(key: key);
 
   @override
   State<CustomCartTile> createState() => _CustomCartTileState();
@@ -37,8 +39,8 @@ class _CustomCartTileState extends State<CustomCartTile> {
               setState(() {
                 widget.cartItem.quantity == quantity;
 
-                if(quantity == 0) {
-                  
+                if (quantity == 0) {
+                  widget.remove(widget.cartItem);
                 }
               });
             }),
