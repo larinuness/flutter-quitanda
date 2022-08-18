@@ -19,6 +19,7 @@ dependencies:
   intl: ^0.17.0
   mask_text_input_formatter: ^2.3.0
   qr_flutter: ^4.0.0
+  shimmer: ^2.0.0
 
 dev_dependencies:
   flutter_launcher_icons: ^0.10.0
@@ -36,4 +37,4 @@ flutter_icons:
   android: true
   ios: true
   image_path: "assets/app_icon.png"
-  remove_alpha_ios: true    
+  remove_alpha_ios: true
