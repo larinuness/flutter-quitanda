@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_quitanda/src/pages/components/custom_app_name.dart';
 
 import '../base/base_page.dart';
 import '../components/custom_textfield.dart';
@@ -25,28 +26,9 @@ class SignInPage extends StatelessWidget {
                   child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text.rich(
-                    TextSpan(
-                      style: TextStyle(
-                        fontSize: 40,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: 'Green',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        TextSpan(
-                          text: 'grocer',
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 132, 18, 10),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
+                  const CustomAppName(
+                    greenTitleColor: Colors.white,
+                    textSize: 40,
                   ),
                   //Categorias
                   SizedBox(

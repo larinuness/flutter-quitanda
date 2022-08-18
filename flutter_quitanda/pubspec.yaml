@@ -29,6 +29,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - assets/frutas/
     - assets/
 
 flutter_icons:

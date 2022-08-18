@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 import '../../../app_data.dart' as appData;
 import '../../../utils/utils_services.dart';
+import '../../components/custom_app_name.dart';
 import '../../components/custom_category_tile.dart';
 import '../../components/custom_item_tile.dart';
 
@@ -37,32 +38,7 @@ class _HomeTabState extends State<HomeTab> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        title: GestureDetector(
-          onTap: () {
-            utils.showToast(
-              message: 'Olá mundo',
-            );
-          },
-          child: const Text.rich(
-            TextSpan(
-              style: TextStyle(
-                fontSize: 30,
-              ),
-              children: [
-                TextSpan(
-                  text: 'Green',
-                  style: TextStyle(color: Colors.green),
-                ),
-                TextSpan(
-                  text: 'grocer',
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 132, 18, 10),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
+        title: const CustomAppName(),
         actions: [
           Padding(
             padding: const EdgeInsets.only(top: 15, right: 15),
