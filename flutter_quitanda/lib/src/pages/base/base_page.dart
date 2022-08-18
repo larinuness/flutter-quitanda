@@ -35,7 +35,10 @@ class _BasePageState extends State<BasePage> {
             //troca de pagina pelo o indice
             setState(() {
               currentIndex = index;
-              pageController.jumpToPage(index);
+              // pageController.jumpToPage(index);
+              pageController.animateToPage(index,
+                  duration: const Duration(milliseconds: 600),
+                  curve: Curves.ease);
             });
           },
           type: BottomNavigationBarType.fixed,
