@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'custom_quantity.dart';
 
 import '../../models/cart_item_model.dart';
 import '../../utils/utils_services.dart';
+import 'custom_quantity.dart';
 
 class CustomCartTile extends StatefulWidget {
   final CartItemModel cartItem;

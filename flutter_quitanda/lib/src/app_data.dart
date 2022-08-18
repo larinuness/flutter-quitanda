@@ -1,7 +1,7 @@
-import 'models/user_model.dart';
-
 import 'models/cart_item_model.dart';
 import 'models/item_model.dart';
+import 'models/order_model.dart';
+import 'models/user_model.dart';
 
 ItemModel apple = ItemModel(
   description:
@@ -88,3 +88,28 @@ UserModel user = UserModel(
     email: 'larissa@teste.com',
     name: 'Larissa',
     password: '');
+
+List<OrderModel> orders = [
+  OrderModel(
+      id: '1',
+      createdDateTime: DateTime.parse('2023-08-16 10:00:10.458'),
+      items: [
+        CartItemModel(item: apple, quantity: 2),
+        CartItemModel(item: mango, quantity: 2),
+      ],
+      overdueDateTime: DateTime.parse('2023-08-16 10:00:10.458'),
+      status: 'pending_payment',
+      copyAndPaste: 'Teste copia e cola',
+      total: 11.0),
+  OrderModel(
+      id: '2',
+      createdDateTime: DateTime.parse('2023-08-16 10:00:10.458'),
+      items: [
+        CartItemModel(item: apple, quantity: 2),
+        CartItemModel(item: mango, quantity: 2),
+      ],
+      overdueDateTime: DateTime.parse('2023-08-16 10:00:10.458'),
+      status: 'delivered',
+      copyAndPaste: 'Teste copia e cola',
+      total: 11.0),
+];

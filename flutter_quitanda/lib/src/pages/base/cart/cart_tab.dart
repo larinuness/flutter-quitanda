@@ -6,6 +6,7 @@ import 'package:flutter_quitanda/src/pages/components/custom_cart_tile.dart';
 
 import '../../../app_data.dart' as appData;
 import '../../../utils/utils_services.dart';
+import '../../components/custom_payment_dialog.dart';
 
 class CartTab extends StatefulWidget {
   const CartTab({Key? key}) : super(key: key);
@@ -98,7 +99,15 @@ class _CartTabState extends State<CartTab> {
                   child: ElevatedButton(
                     onPressed: () async {
                       bool? result = await showOrderConfirmation();
-                      print(result);
+                      if (result ?? false) {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return CustomPaymentDialog(
+                                order: appData.orders.first,
+                              );
+                            });
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(

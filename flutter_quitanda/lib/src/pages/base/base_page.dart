@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'orders/orders_tab.dart';
 
 import 'cart/cart_tab.dart';
 import 'home/home_tab.dart';
@@ -21,11 +22,11 @@ class _BasePageState extends State<BasePage> {
         body: PageView(
           physics: const NeverScrollableScrollPhysics(),
           controller: pageController,
-          children: [
-            const HomeTab(),
-            const CartTab(),
-            Container(color: Colors.orange),
-            const ProfileTab(),
+          children: const [
+            HomeTab(),
+            CartTab(),
+            OrdersTab(),
+            ProfileTab(),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
