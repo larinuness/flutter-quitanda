@@ -26,6 +26,7 @@ class CustomAppName extends StatelessWidget {
             text: 'grocer',
             style: TextStyle(
               color: Color.fromARGB(255, 132, 18, 10),
+              fontWeight: FontWeight.bold,
             ),
           ),
         ],
