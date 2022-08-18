@@ -5,9 +5,12 @@ import '../../utils/utils_services.dart';
 import '../base/home/product/product_page.dart';
 
 class CustomItemTile extends StatelessWidget {
-  CustomItemTile({Key? key, required this.item}) : super(key: key);
-
+  final void Function(GlobalKey) cartAnimationMethod;
   final ItemModel item;
+  final GlobalKey imgGk = GlobalKey();
+  CustomItemTile(
+      {Key? key, required this.item, required this.cartAnimationMethod})
+      : super(key: key);
 
   final utils = UtilsService();
 
@@ -38,6 +41,7 @@ class CustomItemTile extends StatelessWidget {
                       tag: item.img,
                       child: Image.asset(
                         item.img,
+                        key: imgGk,
                       ),
                     ),
                   ),
@@ -72,7 +76,9 @@ class CustomItemTile extends StatelessWidget {
           top: 4,
           right: 4,
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              cartAnimationMethod(imgGk);
+            },
             child: Container(
               height: 40,
               width: 35,
