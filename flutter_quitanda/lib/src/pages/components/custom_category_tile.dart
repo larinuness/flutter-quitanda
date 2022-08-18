@@ -14,8 +14,9 @@ class CustomCategoryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onPressed,
+      borderRadius: BorderRadius.circular(15),
       child: Align(
         alignment: Alignment.center,
         child: Container(

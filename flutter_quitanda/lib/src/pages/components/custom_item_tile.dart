@@ -75,26 +75,30 @@ class CustomItemTile extends StatelessWidget {
         Positioned(
           top: 4,
           right: 4,
-          child: GestureDetector(
-            onTap: () {
-              cartAnimationMethod(imgGk);
-            },
-            child: Container(
-              height: 40,
-              width: 35,
-              decoration: const BoxDecoration(
-                color: Colors.green,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(
-                    15,
-                  ),
-                  topRight: Radius.circular(20),
-                ),
+          child: ClipRRect(
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(
+                15,
               ),
-              child: const Icon(
-                Icons.add_shopping_cart,
-                color: Colors.white,
-                size: 20,
+              topRight: Radius.circular(20),
+            ),
+            child: Material(
+              child: InkWell(
+                onTap: () {
+                  cartAnimationMethod(imgGk);
+                },
+                child: Ink(
+                  height: 40,
+                  width: 35,
+                  decoration: const BoxDecoration(
+                    color: Colors.green,
+                  ),
+                  child: const Icon(
+                    Icons.add_shopping_cart,
+                    color: Colors.white,
+                    size: 20,
+                  ),
+                ),
               ),
             ),
           ),
