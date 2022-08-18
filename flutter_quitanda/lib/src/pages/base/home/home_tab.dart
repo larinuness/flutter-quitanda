@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quitanda/src/pages/components/custom_item_tile.dart';
 
 import '../../../app_data.dart' as appData;
-import '../../components/custom_category_tale.dart';
+import '../../components/custom_category_tile.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({Key? key}) : super(key: key);
