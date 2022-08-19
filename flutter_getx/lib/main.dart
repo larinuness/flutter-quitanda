@@ -42,19 +42,20 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            GetBuilder<ValueController>(
-              init: valueController,
-              builder: (controller) {
-                return Text('Valor definido: ${controller.definedValue}');
+            Obx(
+              () {
+                return Text('Valor definido: ${valueController.definedValue}');
               },
             ),
-            TextField(
-              controller: textController,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 22),
+              child: TextField(
+                controller: textController,
+              ),
             ),
-            GetBuilder<ValueController>(
-              init: valueController,
-              builder: (controller) {
-                return controller.isLoading
+            Obx(
+              () {
+                return valueController.isLoading.value
                     ? const Padding(
                         padding: EdgeInsets.all(8.0),
                         child: CircularProgressIndicator(),
@@ -67,7 +68,9 @@ class MyHomePage extends StatelessWidget {
 
                           textController.clear();
                         },
-                        child: const Text('Confirmar'),
+                        child: const Text(
+                          'Confirmar',
+                        ),
                       );
               },
             )

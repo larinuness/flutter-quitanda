@@ -1,20 +1,16 @@
 import 'package:get/get.dart';
 
 class ValueController extends GetxController {
-  String definedValue = "";
-  bool isLoading = false;
+  RxString definedValue = ''.obs;
+  RxBool isLoading = false.obs;
 
   Future<void> setValue(String value) async {
-    isLoading = true;
-
-    update();
+    isLoading.value = true;
 
     await Future.delayed(const Duration(seconds: 2));
 
-    definedValue = value;
+    definedValue.value = value;
 
-    isLoading = false;
-
-    update();
+    isLoading.value = false;
   }
 }
